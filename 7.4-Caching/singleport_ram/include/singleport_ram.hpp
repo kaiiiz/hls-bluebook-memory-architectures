@@ -37,10 +37,12 @@ class singleport_ram {
         addr_int = addr;
         // manipulate write cache
         if (write) {
-            if (cnt == 0) // write to lower halves
+            if (cnt == 0) { // write to lower halves
             	write_data = (ap_uint<W * 2>(write_data.range(W * 2 - 1, W)) << W) | data_in;
-            else // write to upper halves
+            }
+            else { // write to upper halves
             	write_data = (ap_uint<W * 2>(data_in) << W) | ap_uint<W>(write_data.range(W - 1, 0));
+            }
         }
         // control whether the internal array "ram" is read or written
         // addr_int >> 1 since number of elements is N / 2
@@ -53,10 +55,12 @@ class singleport_ram {
             }
         }
         // read half of read cache
-        if (cnt == 0)
+        if (cnt == 0) {
             tmp = read_data.range(W - 1, 0);
-        else
+        }
+        else {
             tmp = read_data.range(W * 2 - 1, W);
+        }
         ++cnt;
         return tmp;
     }
