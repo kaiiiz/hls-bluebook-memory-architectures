@@ -6,7 +6,15 @@
 template <int W, int N>
 ap_int<W> word_width_mem<W, N>::read(ap_uint<ADDRESS_BITWIDTH> i,
                                      const int offset) {
-  ap_int<W> tmp = 0;
+
+	// Force the call of function being merged
+	// into the FSM of WRITE.
+	// Critical Path will be too long,
+	// but II = 1 is possible
+#pragma HLS INLINE
+
+
+	ap_int<W> tmp = 0;
 
   if (sel_rd++ == 0)  // read once every 3 calls
     read3 = x[i];
@@ -24,6 +32,7 @@ ap_int<W> word_width_mem<W, N>::read(ap_uint<ADDRESS_BITWIDTH> i,
       tmp = read3(W * 3 - 1, W * 2);
       break;
   }
+
   return tmp;
 }
 

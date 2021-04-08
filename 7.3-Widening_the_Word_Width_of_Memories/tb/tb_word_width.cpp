@@ -2,7 +2,7 @@
 #include "../src/word_width.h"
 #include "ap_int.h"
 
-#define AUTO 0
+#define AUTO 1
 
 int main(int argc, char **argv){
 

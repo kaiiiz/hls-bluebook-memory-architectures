@@ -8,8 +8,11 @@ void interleave_manual_rnd(ap_int<8> x_in[NUM_WORDS],
   int idx = 0;
 
   if (load)
-    for (int i = 0; i < NUM_WORDS; i += 1) x.write_rnd(i, x_in);
+    for (int i = 0; i < NUM_WORDS; i += 1)
+#pragma HLS PIPELINE II=1
+    	x.write_rnd(i, x_in);
   else
     for (int i = 0; i < NUM_WORDS; i += 3)
+#pragma HLS PIPELINE II=1
       y[idx++] = x.read_rnd(i, 0) + x.read_rnd(i, 1) + x.read_rnd(i, 2);
 }
