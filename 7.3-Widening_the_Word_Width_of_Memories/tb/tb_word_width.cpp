@@ -1,10 +1,8 @@
 #include <cstdio>
-#include "../src/interleave.h"
+#include "../src/word_width.h"
 #include "ap_int.h"
 
-#define AUTO 1
-#define RND 0
-#define SEQ 0
+#define AUTO 0
 
 int main(int argc, char **argv){
 
@@ -24,18 +22,11 @@ int main(int argc, char **argv){
 
 	// Execution
 #if AUTO
-	interleave(in, hw_out, true);
-	interleave(in, hw_out, false);
-#endif
-
-#if RND
-	interleave_manual_rnd(in, hw_out, true);
-	interleave_manual_rnd(in, hw_out, false);
-#endif
-
-#if SEQ
-	interleave_manual_seq(in, hw_out, true);
-	interleave_manual_seq(in, hw_out, false);
+	word_width(in, hw_out, true);
+	word_width(in, hw_out, false);
+#else
+	word_width_manual(in, hw_out, true);
+	word_width_manual(in, hw_out, false);
 #endif
 
 	// Compare

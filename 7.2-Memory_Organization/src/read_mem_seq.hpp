@@ -1,10 +1,10 @@
 #ifndef __READ_MEM_SEQ__
 #define __READ_MEM_SEQ__
 
-#include "ac_int.h"
+#include "ap_int.h"
 
 template <typename T, int N>
-T interleave_mem_seq<T, N>::read_seq(ac_int<ac::log2_ceil<N>::val, false> i,
+T interleave_mem_seq<T, N>::read_seq(ap_uint<ADDRESS_BITWIDTH> i,
                                      int offset) {
   T tmp = 0;
   switch (offset) {

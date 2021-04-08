@@ -1,9 +1,10 @@
-#include "include/interleave/interleave.h"
-#include "include/interleave/random_access/interleave_mem_rnd.hpp"
+#include "interleave.h"
+#include "interleave_mem_rnd.hpp"
 
-void interleave_manual_rnd(ac_int<8> x_in[NUM_WORDS],
-                           ac_int<8> y[NUM_WORDS / 3], bool load) {
-  static interleave_mem_rnd<ac_int<8>, NUM_WORDS> x;
+void interleave_manual_rnd(ap_int<8> x_in[NUM_WORDS],
+                           ap_int<8> y[NUM_WORDS / 3], bool load) {
+
+  static interleave_mem_rnd<ap_int<8>, NUM_WORDS> x;
   int idx = 0;
 
   if (load)

@@ -1,17 +1,15 @@
-#include "include/interleave/interleave.h"
+#include "interleave.h"
 
-#define USE_AUTO_PARTITION 0
-
-
-void interleave(ac_int<8> x_in[NUM_WORDS], ac_int<8> y[NUM_WORDS / 3],
-                bool load) {
+void interleave(
+		ap_int<8> x_in[NUM_WORDS],
+		ap_int<8> y[NUM_WORDS / 3],
+		bool load) {
   
-  static ac_int<8> x[NUM_WORDS];
-  int idx = 0;
+  static ap_int<8> x[NUM_WORDS];
+#pragma HLS RESOURCE variable=x core=RAM_1P_BRAM
+#pragma HLS ARRAY_PARTITION variable=x cyclic factor=3 dim=1
 
-#if USE_AUTO_PARTITION
-#pragma HLS array_partition variable = x
-#endif
+  int idx = 0;
 
   if (load)
     for (int i = 0; i < NUM_WORDS; i += 1) x[i] = x_in[i];

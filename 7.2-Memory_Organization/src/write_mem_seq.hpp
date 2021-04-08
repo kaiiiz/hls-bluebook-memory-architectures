@@ -1,9 +1,10 @@
 #ifndef __WRITE_MEM_SEQ__
 #define __WRITE_MEM_SEQ__
 
-#include "ac_int.h"
+#include "ap_int.h"
+
 template <typename T, int N>
-void interleave_mem_seq<T, N>::write_seq(ac_int<ac::log2_ceil<N>::val, false> i,
+void interleave_mem_seq<T, N>::write_seq(ap_uint<ADDRESS_BITWIDTH> i,
                                          T x_in[N]) {
   int tmp = x_in[i];
   switch (sel++) {
@@ -14,7 +15,7 @@ void interleave_mem_seq<T, N>::write_seq(ac_int<ac::log2_ceil<N>::val, false> i,
       x1[idx] = tmp;
       break;
     case 2:
-      x2[idx] = tmp;
+      x2[idx++] = tmp;
       break;
   }
 

@@ -1,9 +1,10 @@
 #ifndef __WRITE_MEM_RND__
 #define __WRITE_MEM_RND__
-#include "ac_int.h"
+
+#include "ap_int.h"
 
 template <typename T, int N>
-void interleave_mem_rnd<T, N>::write_rnd(ac_int<ac::log2_ceil<N>::val, false> i,
+void interleave_mem_rnd<T, N>::write_rnd(ap_uint<ADDRESS_BITWIDTH> i,
                                  T x_in[N]) {
   T tmp = x_in[i];
   switch (i % 3) {
