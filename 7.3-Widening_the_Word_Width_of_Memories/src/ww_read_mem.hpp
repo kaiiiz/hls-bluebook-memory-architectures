@@ -11,7 +11,7 @@ ap_int<W> word_width_mem<W, N>::read(ap_uint<ADDRESS_BITWIDTH> i,
 	// into the FSM of WRITE.
 	// Critical Path will be too long,
 	// but II = 1 is possible
-#pragma HLS INLINE
+//#pragma HLS INLINE
 
 
 	ap_int<W> tmp = 0;
