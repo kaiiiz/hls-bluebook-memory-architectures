@@ -6,6 +6,10 @@
 template <typename T, int N>
 T interleave_mem_rnd<T, N>::read_rnd(ap_uint<ADDRESS_BITWIDTH> i,
                              int offset) {
+
+	// Force function being merged into the FSM of WRITE
+#pragma HLS INLINE
+
   T tmp = 0;
   switch (offset) {
     case 0:

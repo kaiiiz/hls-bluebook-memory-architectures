@@ -4,7 +4,9 @@ void interleave(
 		ap_int<8> x_in[NUM_WORDS],
 		ap_int<8> y[NUM_WORDS / 3],
 		bool load) {
-  
+#pragma HLS RESOURCE variable=x_in core=RAM_1P_BRAM
+#pragma HLS RESOURCE variable=y core=RAM_1P_BRAM
+
   static ap_int<8> x[NUM_WORDS];
 #pragma HLS RESOURCE variable=x core=RAM_1P_BRAM
 #pragma HLS ARRAY_PARTITION variable=x cyclic factor=3 dim=1
