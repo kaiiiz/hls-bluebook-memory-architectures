@@ -1,5 +1,5 @@
 #include <iostream>
-#include "window_1d.h"
+#include "../src/window_1d.h"
 
 using namespace std;
 

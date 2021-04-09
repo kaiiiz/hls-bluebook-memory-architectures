@@ -1,5 +1,5 @@
 #include <iostream>
-#include "singleport_ram.hpp"
+#include "../src/singleport_ram.hpp"
 
 using namespace std;
 

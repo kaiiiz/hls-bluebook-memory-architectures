@@ -33,6 +33,7 @@ class singleport_ram {
     //      addr: the read/write address
     //      write: flag to indicate the write should occur (ram array can be read-only)
     ap_uint<W> exec(ap_uint<W> data_in, int addr, bool write) {
+#pragma HLS INLINE
     	ap_uint<W> tmp;
         addr_int = addr;
         // manipulate write cache
@@ -61,7 +62,7 @@ class singleport_ram {
         else {
             tmp = read_data.range(W * 2 - 1, W);
         }
-        ++cnt;
+        cnt++;
         return tmp;
     }
 };
