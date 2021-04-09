@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "../src/shift_reg.h"
 
-# define USE_CIRCULAR_SHIFT 1
+# define USE_CIRCULAR_SHIFT 0
 
 int main(int argc, char **argv){
 
