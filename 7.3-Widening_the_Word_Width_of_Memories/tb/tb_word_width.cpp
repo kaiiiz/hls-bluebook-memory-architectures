@@ -1,6 +1,7 @@
 #include <cstdio>
 #include "../src/word_width.h"
 #include "ap_int.h"
+#include "cstdlib"
 
 #define AUTO 0
 
@@ -12,7 +13,7 @@ int main(int argc, char **argv){
 
 	// Generate Input
 	for (int i=0; i<NUM_WORDS; i++)
-		in[i] = i;
+		in[i] = rand()%300;
 
 	// Generate sw_out
 	for (int i=0; i<NUM_WORDS/3; i++)
